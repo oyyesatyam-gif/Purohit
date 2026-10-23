@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book trusted Pandits for puja, havan and Hindu ceremonies with Purohit Seva.">
+  <title>Purohit Seva | Book a Pandit</title>
+  <style>
+    :root {
+      --saffron: #d97706;
+      --saffron-dark: #9a3412;
+      --maroon: #681c24;
+      --cream: #fffaf0;
+      --gold: #d4a84f;
+      --ink: #29221e;
+      --muted: #71665d;
+      --white: #ffffff;
+      --line: #eadfce;
+      --shadow: 0 12px 34px rgba(75, 35, 13, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); background: var(--cream);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, .btn { cursor: pointer; }
+    .container { width: min(1120px, calc(100% - 36px)); margin: auto; }
+    .topbar { background: var(--maroon); color: #fff4df; text-align: center; padding: 8px 14px; font-size: .88rem; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(255,250,240,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 76px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 850; font-size: 1.15rem; color: var(--maroon); }
+    .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; background: var(--saffron); color: white; font-size: 1.5rem; box-shadow: 0 4px 12px #d9770633; }
+    .brand small { display: block; color: var(--muted); font-size: .7rem; letter-spacing: .09em; text-transform: uppercase; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-weight: 650; font-size: .94rem; }
+    .nav-links a:hover { color: var(--saffron-dark); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 12px 20px; font-weight: 750; transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px #9a341222; }
+    .btn-primary { color: white; background: var(--saffron-dark); }
+    .btn-light { color: var(--maroon); background: white; border: 1px solid var(--line); }
+    .menu-toggle { display: none; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+    .hero { position: relative; overflow: hidden; background: linear-gradient(115deg, #fff0d5 0%, #fff9ed 55%, #f7dfb7 100%); }
+    .hero::after { content: "ॐ"; position: absolute; right: 4%; top: 3%; font-size: clamp(150px, 28vw, 330px); color: #a94d1010; pointer-events: none; }
+    .hero-grid { min-height: 530px; display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 36px; padding-top: 56px; padding-bottom: 56px; position: relative; z-index: 1; }
+    .eyebrow { color: var(--saffron-dark); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; }
+    h1 { color: var(--maroon); font-size: clamp(2.5rem, 5.4vw, 4.7rem); line-height: 1.08; letter-spacing: -.045em; margin: 14px 0 20px; }
+    .hero p { color: #665247; font-size: 1.1rem; max-width: 590px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; color: #6b5548; font-size: .88rem; font-weight: 650; }
+    .hero-art { min-height: 350px; display: grid; place-items: center; }
+    .mandala { width: min(100%, 390px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: repeating-conic-gradient(from 0deg, #f7d99d 0 7deg, #fdf0d1 7deg 14deg); border: 2px solid #e4b45e; box-shadow: 0 20px 55px #7b3e2020; }
+    .mandala-inner { width: 76%; height: 76%; border-radius: 50%; border: 2px solid #d4a84f; display: grid; place-items: center; text-align: center; background: radial-gradient(circle, #fffdf5, #fce7bd); padding: 25px; }
+    .diya { font-size: clamp(4rem, 9vw, 7rem); line-height: 1.1; }
+    .mandala-inner strong { display: block; color: var(--maroon); font-size: 1.4rem; }
+    .mandala-inner span { color: var(--muted); font-size: .9rem; }
+    section { padding: 76px 0; }
+    .section-head { text-align: center; max-width: 690px; margin: 0 auto 36px; }
+    .section-head h2 { color: var(--maroon); font-size: clamp(1.9rem, 3.5vw, 2.7rem); line-height: 1.2; margin: 8px 0 12px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card { background: white; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px #4c2c0d08; display: flex; flex-direction: column; }
+    .service-visual { min-height: 125px; display: grid; place-items: center; font-size: 3rem; background: linear-gradient(135deg, #ffedca, #fff8e9); }
+    .service-content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+    .service-content h3 { margin: 0 0 8px; color: var(--maroon); }
+    .service-content p { margin: 0 0 18px; color: var(--muted); font-size: .93rem; flex: 1; }
+    .service-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .price { font-weight: 850; color: var(--saffron-dark); }
+    .small-btn { padding: 9px 14px; font-size: .88rem; }
+    .how { background: #fff2db; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .step { text-align: center; padding: 24px 18px; background: #fffaf1; border: 1px solid #f0dfc3; border-radius: 16px; }
+    .step-num { display: grid; place-items: center; width: 46px; height: 46px; margin: 0 auto 14px; border-radius: 50%; background: var(--maroon); color: white; font-weight: 800; }
+    .step h3 { margin: 0 0 8px; color: var(--maroon); font-size: 1.05rem; }
+    .step p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .booking-wrap { display: grid; grid-template-columns: .75fr 1.25fr; gap: 34px; align-items: start; }
+    .booking-aside { background: var(--maroon); color: #fff6e8; padding: 30px; border-radius: 20px; }
+    .booking-aside h2 { font-size: 2rem; line-height: 1.2; margin: 8px 0 15px; }
+    .booking-aside p { color: #f0d8ca; }
+    .booking-aside ul { padding-left: 20px; color: #fff0df; }
+    .form-card { padding: 28px; border: 1px solid var(--line); background: white; border-radius: 20px; box-shadow: var(--shadow); }
+    .form-card h3 { color: var(--maroon); margin: 0 0 5px; font-size: 1.45rem; }
+    .form-intro { color: var(--muted); margin: 0 0 22px; font-size: .92rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: .9rem; font-weight: 750; color: #44352d; }
+    input, select, textarea { width: 100%; border: 1px solid #dfd3c5; background: #fffdf9; padding: 12px 13px; border-radius: 10px; color: var(--ink); outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--saffron); box-shadow: 0 0 0 3px #d977061a; }
+    textarea { resize: vertical; min-height: 88px; }
+    .form-note { font-size: .8rem; color: var(--muted); margin: 12px 0 18px; }
+    .success { display: none; padding: 15px; margin-top: 18px; border-radius: 12px; background: #eaf8ed; border: 1px solid #b8e1c1; color: #185c2a; }
+    .success.show { display: block; }
+    .booking-list { margin-top: 24px; }
+    .booking-item { padding: 14px; margin-top: 10px; background: #fffaf1; border: 1px solid var(--line); border-radius: 12px; }
+    .booking-item strong { color: var(--maroon); }
+    .booking-item small { display: block; color: var(--muted); margin-top: 4px; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .why-card { padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .why-card .icon { font-size: 1.8rem; }
+    .why-card h3 { margin: 8px 0 6px; color: var(--maroon); }
+    .why-card p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .faq { max-width: 800px; margin: auto; }
+    details { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; }
+    summary { cursor: pointer; font-weight: 750; color: var(--maroon); }
+    details p { color: var(--muted); margin-bottom: 0; }
+    footer { background: #3d171b; color: #fff2e3; padding: 38px 0 22px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 30px; }
+    footer h3, footer h4 { color: white; margin-top: 0; }
+    footer p, footer a { color: #e7cfc0; font-size: .92rem; }
+    footer a:hover { color: white; }
+    .footer-links { display: grid; gap: 8px; }
+    .copyright { border-top: 1px solid #ffffff25; margin-top: 26px; padding-top: 18px; color: #d9bdb0; font-size: .83rem; }
+    .whatsapp { position: fixed; right: 18px; bottom: 18px; z-index: 30; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; color: white; background: #168b51; font-size: 1.55rem; box-shadow: 0 8px 24px #0003; }
+    .muted { color: var(--muted); }
+    @media (max-width: 850px) {
+      .nav-links { gap: 13px; font-size: .86rem; }
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 12px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .booking-wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 22px 22px; background: var(--cream); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; }
+      .nav-links.open { display: flex; }
+      .nav-links .btn { width: 100%; }
+      .hero-grid { grid-template-columns: 1fr; padding-top: 48px; text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-actions, .trust-row { justify-content: center; }
+      .hero-art { min-height: auto; }
+      .mandala { width: min(76vw, 310px); }
+      section { padding: 58px 0; }
+      .services-grid, .why-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .step { padding: 18px 12px; }
+      .form-card, .booking-aside { padding: 22px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-grid { grid-template-columns: 1fr; gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">🙏 Traditional rituals • Convenient booking • Personalised puja services</div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Purohit Seva home">
+        <span class="brand-mark">ॐ</span>
+        <span>PUROHIT SEVA<small>Your spiritual companion</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰ Menu</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a><a href="#services">Puja Services</a><a href="#how">How It Works</a><a href="#why">Why Us</a><a href="#faq">FAQs</a>
+        <a class="btn btn-primary" href="#booking">Book a Pandit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">A sacred beginning starts here</div>
+          <h1>Bring Divine Blessings to Your Home</h1>
+          <p>Book a Pandit for puja, havan, and sacred Hindu rituals. Find the right service for your special occasion with a simple booking experience.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">🪔 Book a Pandit</a>
+            <a class="btn btn-light" href="#services">Explore Puja Services</a>
+          </div>
+          <div class="trust-row"><span>✓ Easy booking requests</span><span>✓ Personalised rituals</span><span>✓ Direct contact</span></div>
+        </div>
+        <div class="hero-art" aria-label="Decorative diya illustration">
+          <div class="mandala"><div class="mandala-inner"><div class="diya">🪔</div><strong>शुभ आरंभ</strong><span>May every beginning be auspicious</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our services</div>
+          <h2>Find the Right Puja for Your Occasion</h2>
+          <p>Choose a service to begin your booking request. Prices below are sample starting prices and should be confirmed before accepting real bookings.</p>
+        </div>
+        <div class="services-grid" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Simple and convenient</div>
+          <h2>How It Works</h2>
+          <p>Four easy steps to send your puja booking request.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><h3>Choose a Puja</h3><p>Select the ritual that matches your occasion.</p></div>
+          <div class="step"><div class="step-num">2</div><h3>Share Details</h3><p>Enter your location, preferred date, and time.</p></div>
+          <div class="step"><div class="step-num">3</div><h3>Send Request</h3><p>Review your details and send the inquiry.</p></div>
+          <div class="step"><div class="step-num">4</div><h3>Confirm Directly</h3><p>Confirm availability and final price with the service provider.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container booking-wrap">
+        <aside class="booking-aside">
+          <div class="eyebrow" style="color:#f6cf7a">Begin your booking</div>
+          <h2>Let us help you plan your sacred ceremony.</h2>
+          <p>Share a few details and prepare a booking request. The final availability and price must be confirmed with the Pandit.</p>
+          <ul>
+            <li>Choose your puja and preferred schedule</li>
+            <li>Tell us whether you need puja samagri</li>
+            <li>Send your request using WhatsApp</li>
+          </ul>
+          <p><strong>Note:</strong> This demo does not process payments or confirm a Pandit's availability automatically.</p>
+        </aside>
+        <div class="form-card">
+          <h3>Book a Pandit</h3>
+          <p class="form-intro">Complete the form to prepare your booking request.</p>
+          <form id="bookingForm">
+            <div class="form-grid">
+              <div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required placeholder="Your name"></div>
+              <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9+\-\s()]{8,18}" placeholder="+91 98765 43210"></div>
+              <div class="field"><label for="puja">Puja service *</label><select id="puja" name="puja" required><option value="">Choose a puja</option></select></div>
+              <div class="field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required></div>
+              <div class="field"><label for="time">Preferred time *</label><select id="time" name="time" required><option value="">Select time</option><option>Early morning (6–9 AM)</option><option>Morning (9 AM–12 PM)</option><option>Afternoon (12–4 PM)</option><option>Evening (4–8 PM)</option></select></div>
+              <div class="field"><label for="samagri">Puja samagri</label><select id="samagri" name="samagri"><option>Need samagri</option><option>I'll arrange samagri</option><option>Discuss with Pandit</option></select></div>
+              <div class="field full"><label for="address">Full address / city *</label><input id="address" name="address" autocomplete="street-address" required placeholder="House, area, city, PIN code"></div>
+              <div class="field full"><label for="notes">Additional requirements (optional)</label><textarea id="notes" name="notes" placeholder="Language preference, ceremony details, number of people..."></textarea></div>
+            </div>
+            <p class="form-note">Your details will be saved in this browser on this device. You can send your booking request to us on WhatsApp. Do not use this demo to collect sensitive information.</p>
+            <button class="btn btn-primary" type="submit" style="width:100%">Prepare Booking Request →</button>
+            <div class="success" id="successMessage" role="status" aria-live="polite"></div>
+          </form>
+          <div class="booking-list" id="bookingList" hidden>
+            <h3>Your bookings on this device</h3>
+            <p class="form-intro">These records are only stored in this browser and are not visible to the website owner.</p>
+            <div id="bookingItems"></div>
+            <button class="btn btn-light small-btn" id="clearBookings" type="button">Clear local records</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Why Purohit Seva</div><h2>A Thoughtful Way to Arrange Your Puja</h2><p>Designed to make finding and contacting a service provider straightforward.</p></div>
+        <div class="why-grid">
+          <div class="why-card"><div class="icon">🙏</div><h3>Traditional Rituals</h3><p>Describe your ceremony and discuss the ritual requirements directly.</p></div>
+          <div class="why-card"><div class="icon">📅</div><h3>Convenient Requests</h3><p>Share your preferred date, time, and location in one simple form.</p></div>
+          <div class="why-card"><div class="icon">💬</div><h3>Direct Communication</h3><p>Use WhatsApp to follow up and confirm availability and pricing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Need to know</div><h2>Frequently Asked Questions</h2></div>
+        <div class="faq">
+          <details><summary>Does submitting the form confirm my booking?</summary><p>No. It prepares a request. The date, availability, final price, and booking must be confirmed directly with the service provider.</p></details>
+          <details><summary>Is puja samagri included?</summary><p>Choose your preference in the form and confirm the exact inclusions and any extra cost before booking.</p></details>
+          <details><summary>Can I choose a preferred date?</summary><p>Yes. Enter your preferred date and time. Availability is not checked automatically in this demo.</p></details>
+          <details><summary>Are the listed prices final?</summary><p>No. They are sample starting prices for layout demonstration. Replace them with your actual prices before publishing.</p></details>
+          <details><summary>Are my bookings stored online?</summary><p>No. This starter version stores records in the current browser only. A shared database and secure admin dashboard need a backend integration.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><h3>🪔 Purohit Seva</h3><p>Your spiritual companion for puja, havan, and sacred Hindu ceremonies. Connect with a service provider and discuss your requirements.</p></div>
+        <div><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#services">Puja Services</a><a href="#booking">Book a Pandit</a><a href="#faq">FAQs</a></div></div>
+        <div><h4>Contact</h4><p>Phone: <a href="tel:+918207471989">8207471989</a><br>Email: <a href="mailto:oyyesatyam@gmail.com">oyyesatyam@gmail.com</a><br>WhatsApp: <a href="https://wa.me/918207471989" target="_blank" rel="noopener">Chat with us</a></p><a href="#booking">Send a booking inquiry →</a></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> Purohit Seva. Please verify service details and pricing before publishing.</div>
+    </div>
+  </footer>
+  <a class="whatsapp" id="whatsappLink" href="#" target="_blank" rel="noopener" aria-label="Contact on WhatsApp" title="WhatsApp">☏</a>
+
+  <script>
+    // WhatsApp number in international format: country code + phone number, digits only.
+    const WHATSAPP_NUMBER = "918207471989";
+
+    // These are sample prices. Replace them with your real starting prices.
+    const services = [
+      {name:"Griha Pravesh Puja", icon:"🏡", price:2100, description:"Traditional housewarming ceremony for a new home."},
+      {name:"Satyanarayan Katha", icon:"📿", price:1500, description:"A devotional katha and puja for blessings and well-being."},
+      {name:"Ganesh Puja", icon:"🐘", price:1100, description:"Prayer to Lord Ganesha for an auspicious beginning."},
+      {name:"Rudrabhishek", icon:"🔱", price:2100, description:"A sacred Shiva worship ceremony; confirm the ritual details."},
+      {name:"Navagraha Shanti", icon:"🪐", price:3100, description:"A puja performed according to the family's requirements."},
+      {name:"Vastu Shanti Puja", icon:"🏠", price:2500, description:"A traditional ceremony for a home or workspace."},
+      {name:"Marriage Puja", icon:"💐", price:5100, description:"Discuss ceremony requirements and schedule with the Pandit."},
+      {name:"Mundan Sanskar", icon:"🌼", price:2100, description:"A traditional ceremony for a child's first haircut."},
+      {name:"Havan / Yagna", icon:"🔥", price:2100, description:"Sacred fire ritual with requirements agreed in advance."},
+      {name:"Lakshmi Puja", icon:"🪷", price:1500, description:"Worship associated with prosperity and auspiciousness."},
+      {name:"Shraddh / Pind Daan", icon:"🕉️", price:3100, description:"Discuss family traditions, location, and ceremony details."},
+      {name:"Custom Puja", icon:"🙏", price:0, description:"Tell us about your occasion and request a tailored quote."}
+    ];
+
+    const rupees = amount => amount ? "₹" + amount.toLocaleString("en-IN") + "+" : "Request a quote";
+    const servicesGrid = document.getElementById("servicesGrid");
+    const pujaSelect = document.getElementById("puja");
+
+    services.forEach((service, index) => {
+      const card = document.createElement("article");
+      card.className = "service-card";
+      card.innerHTML = `
+        <div class="service-visual" aria-hidden="true">${service.icon}</div>
+        <div class="service-content">
+          <h3>${service.name}</h3>
+          <p>${service.description}</p>
+          <div class="service-bottom"><span class="price">${rupees(service.price)}</span><button class="btn btn-primary small-btn" type="button" data-service="${index}">Book Now</button></div>
+        </div>`;
+      servicesGrid.appendChild(card);
+      const option = document.createElement("option");
+      option.value = service.name;
+      option.textContent = `${service.name} — ${rupees(service.price)}`;
+      pujaSelect.appendChild(option);
+    });
+
+    servicesGrid.addEventListener("click", event => {
+      const button = event.target.closest("[data-service]");
+      if (!button) return;
+      pujaSelect.value = services[Number(button.dataset.service)].name;
+      document.getElementById("booking").scrollIntoView({behavior:"smooth"});
+      document.getElementById("name").focus({preventScroll:true});
+    });
+
+    const dateInput = document.getElementById("date");
+    const localToday = new Date();
+    dateInput.min = `${localToday.getFullYear()}-${String(localToday.getMonth()+1).padStart(2,"0")}-${String(localToday.getDate()).padStart(2,"0")}`;
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }));
+
+    const STORAGE_KEY = "purohitSevaDemoBookings";
+    function getBookings() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+      catch { return []; }
+    }
+    function renderBookings() {
+      const bookings = getBookings();
+      const list = document.getElementById("bookingList");
+      const items = document.getElementById("bookingItems");
+      list.hidden = bookings.length === 0;
+      items.replaceChildren();
+      bookings.slice().reverse().forEach(booking => {
+        const item = document.createElement("div");
+        item.className = "booking-item";
+        const title = document.createElement("strong");
+        title.textContent = `${booking.id} · ${booking.puja}`;
+        const detail = document.createElement("small");
+        detail.textContent = `${booking.date} · ${booking.time} · ${booking.name} · ${booking.phone}`;
+        const status = document.createElement("small");
+        status.textContent = "Status: Request prepared (not confirmed)";
+        item.append(title, detail, status);
+        items.appendChild(item);
+      });
+    }
+
+    document.getElementById("bookingForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const booking = {
+        id: "PS-" + Date.now().toString().slice(-8),
+        name: data.name.trim(),
+        phone: data.phone.trim(),
+        puja: data.puja,
+        date: data.date,
+        time: data.time,
+        samagri: data.samagri,
+        address: data.address.trim(),
+        notes: data.notes.trim(),
+        createdAt: new Date().toISOString()
+      };
+      const bookings = getBookings();
+      bookings.push(booking);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookings));
+      } catch {
+        alert("This browser could not save the booking locally. You can still send the request through WhatsApp.");
+      }
+      renderBookings();
+
+      const message = [
+        "Namaste, I would like to request a Purohit Seva booking.",
+        `Booking ID: ${booking.id}`,
+        `Name: ${booking.name}`,
+        `Phone: ${booking.phone}`,
+        `Puja: ${booking.puja}`,
+        `Preferred date: ${booking.date}`,
+        `Preferred time: ${booking.time}`,
+        `Samagri: ${booking.samagri}`,
+        `Address: ${booking.address}`,
+        `Additional requirements: ${booking.notes || "None"}`,
+        "",
+        "Please confirm availability and final price."
+      ].join("\n");
+
+      const success = document.getElementById("successMessage");
+      success.textContent = `Request ${booking.id} has been prepared and saved in this browser. It is not yet confirmed. Use the WhatsApp button below to send the request to the service provider.`;
+      success.classList.add("show");
+
+      const waLink = document.getElementById("whatsappLink");
+      waLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      waLink.setAttribute("aria-label", "Send booking request on WhatsApp");
+      waLink.title = "Send booking request on WhatsApp";
+      waLink.style.animation = "none";
+      waLink.innerHTML = "↗";
+      waLink.focus();
+      success.scrollIntoView({behavior:"smooth", block:"nearest"});
+    });
+
+    document.getElementById("clearBookings").addEventListener("click", () => {
+      if (confirm("Delete the booking records stored in this browser?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderBookings();
+        document.getElementById("successMessage").classList.remove("show");
+      }
+    });
+
+    // Set a helpful default WhatsApp link. Replace WHATSAPP_NUMBER before publishing.
+    document.getElementById("whatsappLink").href = `https://wa.me/${WHATSAPP_NUMBER}`;
+    renderBookings();
+  </script>
+</body>
+</html>
